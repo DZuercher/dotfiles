@@ -1,0 +1,28 @@
+[global_config]
+  inactive_color_offset = 1.0
+  scroll_tabbar = True
+  tab_position = hidden
+  title_use_system_font = False
+[keybindings]
+  line_down = <Primary>k
+  line_up = <Primary>l
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.91
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Source Code Pro 12
+    foreground_color = "#0ef4f4"
+    icon_bell = False
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
