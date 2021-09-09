@@ -5,7 +5,6 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,33 +30,15 @@ set $inactive-bg-color    #000000
 set $text-color           #0ef4f4
 set $inactive-text-color  #0ef4f4
 set $urgent-bg-color      #E53935
-#set $bg-color            #2f343f
-#set $inactive-bg-color   #2f343f
-#set $text-color          #f3f4f5
-#set $inactive-text-color #676E7D
-#set $urgent-bg-color     #E53935
 
 #setting window colors
-#			            border			    background		    text			        indicator
-client.focused		    $text-color		    $bg-color		    $text-color		        #00ff00
-client.unfocused	    $text-color     	$inactive-bg-color	$inactive-text-color	#00ff00
-client.focused_inactive	$text-color     	$inactive-bg-color	$inactive-text-color	#00ff00
-client.urgent		    $text-color     	$urgent-bg-color	$text-color		        #00ff00
+#			            border	    background		   text			        indicator
+client.focused		    $text-color	$bg-color		   $text-color		    #00ff00
+client.unfocused	    $text-color $inactive-bg-color $inactive-text-color	#00ff00
+client.focused_inactive	$text-color $inactive-bg-color $inactive-text-color	#00ff00
+client.urgent		    $text-color $urgent-bg-color   $text-color		    #00ff00
 
 #configure the bottom status bar
-bar{
-	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	#status_command i3status
-	colors{
-		background $bg-color
-		separator $text-color
-		#				      border			      background		      text
-		focused_workspace     $bg-color               $bg-color               $text-color
-		active_workspace      $inactive-bg-color      $inactive-bg-color      $inactive-text-color
-		inactive_workspace    $inactive-bg-color      $inactive-bg-color      $inactive-text-color	
-		urgent_workspace      $text-color             $text-color             $bg-color		
-        }
-}
 
 #do not show borders between different tiled windows
 hide_edge_borders both
@@ -109,19 +90,22 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #KEYBINDINGS
 ##################
 
-bindsym $mod+Shift+l exec ~/Documents/scripts/lock.sh 
+bindsym $mod+Shift+e exec xfce4-session-logout
+
+# bindsym $mod+Shift+l exec ~/Documents/scripts/lock.sh 
+# bindsym $mod+Shift+l exec i3lock 
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #Setting urxvt as default terminal
 #bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '#000000' -nf '#0ef4f4' -sb '#0ef4f4' -sf '#000000'
+bindsym $mod+d exec rofi -show run -nb '#000000' -nf '#0ef4f4' -sb '#0ef4f4' -sf '#000000'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -158,7 +142,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -181,7 +165,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -228,22 +212,34 @@ new_window 1pixel
 #OTHERS
 #######################
 
-#compton for tranparency
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+#Starting Network manager applet
 
-#start applications on startup of i3
-exec firefox
-exec thunderbird
+#compton for tranparency
+exec --no-startup-id picom --config ~/.config/picom.conf
+
+
+# starting conky
+#exec_always conky
 
 #set wallpaper
-exec_always feh --bg-scale /home/dominik/Pictures/arch_2.png
+exec_always --no-startup-id feh --bg-scale /home/dominik/Pictures/No_Mans_Sky_1.jpg
 
 #NOTE: can also use xrandr commands with exec_always to redo display/monitor settings when restarting i3 inplace (quite nice)
 
 #automatically assigning certain program to certain workspaces
 #NOTE: can find class of a program using xprop (then click on prgram window and copy second value in line WM_CLASS 
-assign [class="firefox"] $ws2
-assign [class="Thunderbird"] $ws3
-#assign [class="Atom"] $ws4
+#assign [class="zoom"] $ws8
+assign [class="Thunderbird"] $ws9
+assign [class="googlecalendar-nativefier-e22938"] $ws9
+assign [class="whatsapp-nativefier-d40211"] $ws10
+assign [class="Element"] $ws10
+assign [class="slack"] $ws10
 
-exec /usr/bin/redshift
+#start applications on startup of i3
+#exec firefox 
+#exec thunderbird
+#exec zoom
+#exec trello
+#exec element-desktop
+#exec google-calendar-nativefier
+#exec /usr/bin/redshift

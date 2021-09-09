@@ -1,0 +1,103 @@
+shell:
+  program: /bin/bash
+  args:
+    - -l
+    - -c
+    - "tmux"
+
+# Font configuration (changes require restart)
+font:
+  # The normal (roman) font face to use.
+  # Style can be specified to pick a specific face.
+  normal:
+    family: Inconsolata 
+    style: Light
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+    # style: Retina
+
+  # The bold font face
+  bold:
+    family: Inconsolata
+    style: Medium
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+
+  # The italic font face
+  italic:
+    family: Inconsolata
+    style: "Light Italic"
+    # style: "Light Oblique"
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+    # style: "Medium Italic"
+
+  # Point size of the font
+  size: 12.0
+
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the linespacing, and offset.x as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0
+    y: 0
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: false
+
+# Use custom cursor colors. If true, display the cursor in the cursor.foreground
+# and cursor.background colors, otherwise invert the colors of the cursor.
+custom_cursor_colors: true
+
+# COLOR SCHEMES
+schemes:
+  # Doom One
+  doom-one: &doom-one
+    primary:
+      background: '#000000'
+      foreground: '#34dceb'
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    selection:
+      text: CellBackground
+      background: CellForeground
+    normal:
+      black:   '#000000'
+      red:     '#c42727'
+      green:   '#26d432'
+      yellow:  '#d4bd26'
+      blue:    '#3449eb'
+      magenta: '#b02169'
+      cyan:    '#34dceb'
+      white:   '#ffffff'
+    bright:
+      black:   '#000000'
+      red:     '#c42727'
+      green:   '#26d432'
+      yellow:  '#d4bd26'
+      blue:    '#2d30eb'
+      magenta: '#b02169'
+      cyan:    '#34dceb'
+      white:   '#ffffff'
+    dim:
+      black:   '#000000'
+      red:     '#c42727'
+      green:   '#26d432'
+      yellow:  '#d4bd26'
+      blue:    '#2d30eb'
+      magenta: '#b02169'
+      cyan:    '#34dceb'
+      white:   '#ffffff'
+
+
+# Choose ONE color scheme from those available in the above list.
+colors: *doom-one
+
+

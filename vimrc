@@ -1,54 +1,54 @@
-" Setting up Vundle VIM Plugin manager"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
 
-set nocompatible " be iMproved
-filetype off
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()"
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-execute pathogen#infect()
-
-" let Vundle manage Vundle
-"Plugin 'VundleVim/Vundle.vim'"
-
-" YouCompleteMe autocompletion plugin"
-"Plugin 'Valloric/YouCompleteMe'"
-
-
-" All of your Plugins must be added before the following line
-"call vundle#end()"
-"filetype plugin indent on"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting "
-syntax on
-" Display 5 lines above/below the cursor when scrolling with a mouse."
-set scrolloff=5
-" Highlight matching pairs of brackets. Use the '%' character to jump between them."
-set matchpairs+=<:>
-" Display different types of white spaces."
-" set list"
-" set listchars=tab:›\ ,trail:•,extends:#,nbsp:. "
-" Encoding "
 set encoding=utf-8
 
-" Set tabwidth and indenting "
+set background=dark
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" If vim-plug is not found, install it and every plugin
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+  Plug 'ConnorHolyday/vim-snazzy'
+  Plug 'godlygeek/csapprox'
+call plug#end()
+
+" Color scheme
+syntax on
+set t_Co=256
+colorscheme snazzy
+
+" .pl for prolog, not perl
+au BufRead,BufNewFile *.pl set filetype=prolog
+
+" Indentation
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4 
+set softtabstop=4
 set expandtab
 
-" Always show line numbers"
+" Code readability
 set number
+set colorcolumn=80
 
+set termguicolors
 
-" Default movement keybinding "
-:nnoremap j <Left> 
-:nnoremap ; <Right><Left> 
-:nnoremap k <Up>
-:nnoremap l <Down>
+set noshowmode
 
-" Default color scheme"
-" set background=dark "
-" secolorscheme solarized "
+set shortmess=I
+
+" powerline
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+

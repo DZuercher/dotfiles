@@ -1,4 +1,0 @@
-# Enable the ability to use regular copy-paste
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard
